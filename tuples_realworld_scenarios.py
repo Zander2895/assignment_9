@@ -8,3 +8,20 @@
 
 # library = [("1984", "George Orwell"), ("Brave New World", "Aldous Huxley")]
 # - Add functionality to insert new books into `library`. Ensure that adding a duplicate book is handled appropriately.
+
+class LibrarySystem:
+    def __init__(self):
+        self.books = []
+
+    def add_book(self, title, author, isbn):
+        new_book = (title, author, isbn)
+
+        if not any(book[2] == isbn for book in self.books):
+            self.books.append(new_book)
+            print(f"Book '{title}' added successfully.")
+        else:
+            print(f"Book with ISBN '{isbn}' already exists.")
+
+    def display_books(self):
+        for book in self.books:
+            print(f"Title: {book[0]}, Author: {book[1]}, ISBN: {book[2]}")
