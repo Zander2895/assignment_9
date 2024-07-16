@@ -1,17 +1,33 @@
-# 3. Mastering Tuple Packing and Unpacking in Python
-# Objective: The goal of this assignment is to deepen your understanding of tuple packing and unpacking in Python.
+orders = [
+    ("Alice", "Laptop", 1),
+    ("Bob", "Camera", 2),
+    ("Carol", "Cherry", 3)
+]
 
-# Task 1: Customer Order Processing Refine your skills in tuple unpacking by managing customer orders.
+# Function to print orders
+def print_orders(orders):
+    for order in orders:
+        customer_name, product_name, quantity = order
+        print(f"Customer: {customer_name}, Product: {product_name}, Quantity: {quantity}")
 
-# Problem Statement: You are given a list of tuples, each representing a customer's order.
-# Each tuple contains the customer's name, the product ordered, and the quantity.
-# Your task is to unpack each tuple and print the order details in a user-friendly format.
+# Function to add a new order
+def add_order():
+    customer_name = input("Enter customer name: ")
+    product_name = input("Enter product name: ")
+    quantity = int(input("Enter quantity: "))
+    orders.append((customer_name, product_name, quantity))
 
-# Sample Order Data:
+# Print existing orders
+print("Existing Orders:")
+print_orders(orders)
 
-# orders = [
-#     ("Alice", "Laptop", 1),
-#     ("Bob", "Camera", 2),
-#     # More orders...
-# ]
-# - Write a function to iterate over the list of orders. - Unpack each tuple in the list and format the details for display.
+# Ask user if they want to add more orders
+while True:
+    add_more = input("Do you want to add another order? (yes/no): ").lower()
+    if add_more != 'yes':
+        break
+    add_order()
+
+# Print updated orders
+print("\nUpdated Orders:")
+print_orders(orders)
